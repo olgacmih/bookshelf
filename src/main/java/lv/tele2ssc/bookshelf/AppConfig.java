@@ -1,5 +1,6 @@
 package lv.tele2ssc.bookshelf;
 
+import lv.tele2ssc.bookshelf.controllers.CurrentUserInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

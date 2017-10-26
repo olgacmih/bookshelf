@@ -1,4 +1,4 @@
-package lv.tele2ssc.bookshelf;
+package lv.tele2ssc.bookshelf.model;
 
 import java.io.Serializable;
 import javax.persistence.Column;

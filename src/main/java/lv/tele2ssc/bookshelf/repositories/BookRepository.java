@@ -1,5 +1,6 @@
-package lv.tele2ssc.bookshelf;
+package lv.tele2ssc.bookshelf.repositories;
 
+import lv.tele2ssc.bookshelf.model.Book;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

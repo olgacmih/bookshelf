@@ -1,9 +1,15 @@
-package lv.tele2ssc.bookshelf;
+package lv.tele2ssc.bookshelf.controllers;
 
+import java.util.ArrayList;
+import lv.tele2ssc.bookshelf.services.UserService;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import javax.validation.Valid;
+import lv.tele2ssc.bookshelf.model.Book;
+import lv.tele2ssc.bookshelf.model.Reservation;
+import lv.tele2ssc.bookshelf.model.User;
+import lv.tele2ssc.bookshelf.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,19 +23,35 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private ReservationService reservationService;
 
     @RequestMapping(path = "/mybooks", method = RequestMethod.GET)
     public String page(Model model) {
-        Book b1 = new Book();
-        b1.setId(1L);
-        b1.setTitle("Book One");
-        b1.setAuthor("John Smith");
-        b1.setDescription("blah blah blah");
-        b1.setYear(2035);
-
-        List<Book> available = Collections.nCopies(3, b1);
-        List<Book> queued = Collections.nCopies(5, b1);
-        List<Book> owned = Collections.nCopies(2, b1);
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.findByEmail(email);
+        
+        List<Reservation> reservations = reservationService.findAllByUser(user);
+        
+        List<Book> available = new ArrayList<>();
+        List<Book> queued = new ArrayList<>();
+        List<Book> owned = new ArrayList<>();
+        
+        for (Reservation r : reservations) {
+            Book b = r.getBook();
+            
+            switch (r.getStatus()) {
+                case AVAILABLE:
+                    available.add(b);
+                    break;
+                case IN_QUEUE:
+                    queued.add(b);
+                    break;
+                case TAKEN:
+                    owned.add(b);
+                    break;
+            }
+        }
 
         model.addAttribute("availableBooks", available);
         model.addAttribute("queuedBooks", queued);

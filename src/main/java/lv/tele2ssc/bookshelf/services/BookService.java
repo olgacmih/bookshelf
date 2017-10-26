@@ -1,6 +1,8 @@
-package lv.tele2ssc.bookshelf;
+package lv.tele2ssc.bookshelf.services;
 
 import java.util.List;
+import lv.tele2ssc.bookshelf.model.Book;
+import lv.tele2ssc.bookshelf.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

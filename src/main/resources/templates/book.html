@@ -33,7 +33,8 @@
                             <td th:text="${book.year}">1989</td>
                         </tr>
                     </table>
-                    <form action="mybooks.html">
+                    <form action="mybooks.html" th:action="@{/order}" method="post">
+                        <input type="hidden" name="bookId" th:value="${book.id}"/>
                         <button class="w3-button w3-right w3-red">Order</button>
                     </form>
                 </div>

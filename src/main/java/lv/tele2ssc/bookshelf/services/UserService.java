@@ -1,8 +1,12 @@
-package lv.tele2ssc.bookshelf;
+package lv.tele2ssc.bookshelf.services;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import lv.tele2ssc.bookshelf.model.Role;
+import lv.tele2ssc.bookshelf.repositories.RoleRepository;
+import lv.tele2ssc.bookshelf.model.User;
+import lv.tele2ssc.bookshelf.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

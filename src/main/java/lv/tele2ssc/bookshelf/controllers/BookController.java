@@ -1,6 +1,8 @@
-package lv.tele2ssc.bookshelf;
+package lv.tele2ssc.bookshelf.controllers;
 
+import lv.tele2ssc.bookshelf.services.BookService;
 import javax.validation.Valid;
+import lv.tele2ssc.bookshelf.model.Book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
